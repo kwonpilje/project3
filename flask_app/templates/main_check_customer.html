@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block title %}
+지연 및 결항편을 이용하는 고객들에게 안내 문자를 전송합니다.
+{% endblock %}
+
+{% block lead %}
+안내 문자 전송 후 항공편 정보를 삭제할 수 있습니다.
+{% endblock %}
+
+{% block main_body %}
+<form method="POST" action="/check_customer">
+  <input name="flight_search" style="margin-bottom:10px" class="form-control" type="text" placeholder="예시: KE1234"/>
+  <input type="submit" class="btn btn-primary" value="조회하기"/>
+</form>
+
+{% if doc %}
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">편명</th>
+      <th scope="col">출발공항</th>
+      <th scope="col">도착공항</th>
+      <th scope="col">예상운항상태</th>
+      <th scope="col">고객 관리</th>
+      <th scope="col">삭제하기</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">{{ doc.flight }}</th>
+      <td>{{ doc.airport_ori }}</td>
+      <td>{{ doc.airport_des }}</td>
+      <td>{{ doc.prediction }}</td>
+
+      <td>
+        {% if result_msg %}
+        <a class="btn btn-secondary", href='/send_msg/{{ doc.flight }}'>{{result_msg}}</a>
+        {% else %}
+        <a class="btn btn-secondary", href='/send_msg/{{ doc.flight }}'>안내문자 전송</a>
+        {% endif %}
+      </td>
+      <td>
+        <a class="btn btn-secondary", href='/check_customer/{{ doc.flight }}'>Delete</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+{% endif %}
+
+{% if result %}
+<p>{{ result }}</p>
+{% endif %}
+
+
+{% endblock %}
+
