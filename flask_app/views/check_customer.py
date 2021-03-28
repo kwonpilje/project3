@@ -182,4 +182,5 @@ def send_msg(flight):
 
     else:
         print('메시지를 성공적으로 보내지 못했습니다. 오류메시지 : ' + str(response.json()))
-        return redirect(url_for("check_customer.check_customer"))
+        # return redirect(url_for("check_customer.check_customer"))
+        return render_template("main_check_customer.html", doc = doc, result_msg = result_msg)
