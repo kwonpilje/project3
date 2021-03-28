@@ -105,14 +105,18 @@ def send_msg(flight):
     else:
         status = "정상"
 
-    if airport_ori == "RKSS" or airport_des == "RKSS":
+    if airport_ori == "RKSS":
         airport_ori_korean = "김포국제공항"
-        airport_des_korean = "김포국제공항"
-    elif airport_ori == "RKPC" or airport_des == "RKPC":
+    elif airport_ori == "RKPC":
         airport_ori_korean = "제주국제공항"
-        airport_des_korean = "제주국제공항"
-    elif airport_ori == "RKPK" or airport_des == "RKPK":
+    elif airport_ori == "RKPK":
         airport_ori_korean = "김해국제공항"
+
+    if airport_des == "RKSS":
+        airport_des_korean = "김포국제공항"
+    elif airport_des == "RKPC":
+        airport_des_korean = "제주국제공항"
+    elif airport_des == "RKPK":
         airport_des_korean = "김해국제공항"
 
     # 3. 카톡 보내기
@@ -182,5 +186,5 @@ def send_msg(flight):
 
     else:
         print('메시지를 성공적으로 보내지 못했습니다. 오류메시지 : ' + str(response.json()))
-        # return redirect(url_for("check_customer.check_customer"))
-        return render_template("main_check_customer.html", doc = doc, result_msg = result_msg)
+        return redirect(url_for("check_customer.check_customer"))
+        # return render_template("main_check_customer.html", doc = doc, result_msg = result_msg)
