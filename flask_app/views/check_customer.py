@@ -105,15 +105,15 @@ def send_msg(flight):
     else:
         status = "정상"
 
-    if airport_ori or airport_des == RKSS:
-        airport_ori = "김포국제공항"
-        airport_des = "김포국제공항"
-    elif airport_ori or airport_des == RKPC:
-        airport_ori = "제주국제공항"
-        airport_des = "제주국제공항"
-    elif airport_ori or airport_des == RKPK:
-        airport_ori = "김해국제공항"
-        airport_des = "김해국제공항"
+    if airport_ori == "RKSS" or airport_des == "RKSS":
+        airport_ori_korean = "김포국제공항"
+        airport_des_korean = "김포국제공항"
+    elif airport_ori == "RKPC" or airport_des == "RKPC":
+        airport_ori_korean = "제주국제공항"
+        airport_des_korean = "제주국제공항"
+    elif airport_ori == "RKPK" or airport_des == "RKPK":
+        airport_ori_korean = "김해국제공항"
+        airport_des_korean = "김해국제공항"
 
     # 3. 카톡 보내기
 
@@ -133,7 +133,7 @@ def send_msg(flight):
 
     data = {
         "template_object" : json.dumps({ "object_type" : "text",
-                                        "text" : f"[대한항공 - 운항 안내] \n\n ▶ {status} 안내: 17시 출발 예정이었던 {flight}편({airport_ori}발 {airport_des}행)은 {status} 출발 예정입니다. \n\n ▶ {status} 사유: 도착 공항 기상 악화. \n\n ▶ 재안내: 기상 상황이 개선되는대로 문자를 통해 탑승수속 및 탑승구 정보를 안내드리겠습니다.  \n\n ▶ 이용에 불편을 드려 대단히 죄송합니다.",     
+                                        "text" : f"[대한항공 - 운항 안내] \n\n ▶ {status} 안내: 17시 출발 예정이었던 {flight}편({airport_ori_korean}발 {airport_des_korean}행)은 {status} 출발 예정입니다. \n\n ▶ {status} 사유: 도착 공항 기상 악화. \n\n ▶ 재안내: 기상 상황이 개선되는대로 문자를 통해 탑승수속 및 탑승구 정보를 안내드리겠습니다.  \n\n ▶ 이용에 불편을 드려 대단히 죄송합니다.",     
                                         "link": {"web_url": "www.naver.com"}
         })
     }
