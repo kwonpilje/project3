@@ -125,13 +125,30 @@ def send_msg(flight):
     # Host: kapi.kakao.com
     # Authorization: Bearer {ACCESS_TOKEN}
 
-    token = "yXXzlS0y4K91iItLUgY6D-nnavJ_Xcupdi58ZQopyV4AAAF4drrfTQ"
+    url_token = "https://kauth.kakao.com/oauth/token"
+
+    code = "0x5E_F3SjF9atxrWns5QVAGTTARsBAFMNQJBkDLSxJpLvjWdXP9Gm6aZa1J9ad8GNjUUdQo9c5oAAAF4eApQnA"
+
+    data_token = {
+    "grant_type":"authorization_code",
+    "client_id":"4a616087b1e8515fa16f16602b7d1773",
+    "redirect_url":"https://companycustomermanage.herokuapp.com/",
+    "code":code
+    }
+
+    response_token = requests.post(url_token, data=data_token)
+
+    token = response_token.json()
+
+    print(token)
+
+    # token = "yXXzlS0y4K91iItLUgY6D-nnavJ_Xcupdi58ZQopyV4AAAF4drrfTQ"
 
     url = "https://kapi.kakao.com/v2/api/talk/memo/default/send"
 
     # 사용자 토큰
     headers = {
-        "Authorization": "Bearer " + token
+        "Authorization": "Bearer " + token["access_token"]
     }
 
 
@@ -184,7 +201,7 @@ def send_msg(flight):
             return render_template("main_check_customer.html", doc = doc, result_msg = result_msg)
         # return redirect(url_for("check_customer.check_customer"))
 
-    # else:
-    #     print('메시지를 성공적으로 보내지 못했습니다. 오류메시지 : ' + str(response.json()))
-    #     return redirect(url_for("check_customer.check_customer"))
-    #     # return render_template("main_check_customer.html", doc = doc, result_msg = result_msg)
+    else:
+        print('메시지를 성공적으로 보내지 못했습니다. 오류메시지 : ' + str(response.json()))
+        return redirect(url_for("check_customer.check_customer"))
+        # return render_template("main_check_customer.html", doc = doc, result_msg = result_msg)
