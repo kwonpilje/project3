@@ -168,7 +168,7 @@ def send_msg(flight):
     
         ## DB에 flight_info가 없다면
         if flight_info is None:
-            result = "항공편 정보가 없습니다. 다시 입력해주십시오."
+            result = "항공편 정보가 없습니다."
             return render_template("main_check_customer.html", result = result)
         
         ## DB에 flight_info가 있다면
