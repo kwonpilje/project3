@@ -43,7 +43,12 @@
         {% if result_msg %}
         <a class="btn btn-secondary", href='/send_msg/{{ doc.flight }}'>{{result_msg}}</a>
         {% else %}
-        <a class="btn btn-secondary", href='/send_msg/{{ doc.flight }}'>안내문자 전송</a>
+        <a class="btn btn-secondary", href='/send_msg/{{ doc.flight }}' onclick="alert_msg()">안내문자 전송</a>
+        <script>
+          function alert_msg(){
+          alert("문자 전송이 완료되었습니다.")
+        }
+        </script>
         {% endif %}
       </td>
       <td>

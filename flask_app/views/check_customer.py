@@ -125,30 +125,31 @@ def send_msg(flight):
     # Host: kapi.kakao.com
     # Authorization: Bearer {ACCESS_TOKEN}
 
-    url_token = "https://kauth.kakao.com/oauth/token"
+    # url_token = "https://kauth.kakao.com/oauth/token"
 
-    code = "0x5E_F3SjF9atxrWns5QVAGTTARsBAFMNQJBkDLSxJpLvjWdXP9Gm6aZa1J9ad8GNjUUdQo9c5oAAAF4eApQnA"
+    # code = "0x5E_F3SjF9atxrWns5QVAGTTARsBAFMNQJBkDLSxJpLvjWdXP9Gm6aZa1J9ad8GNjUUdQo9c5oAAAF4eApQnA"
 
-    data_token = {
-    "grant_type":"authorization_code",
-    "client_id":"4a616087b1e8515fa16f16602b7d1773",
-    "redirect_url":"https://companycustomermanage.herokuapp.com/",
-    "code":code
-    }
+    # data_token = {
+    # "grant_type":"authorization_code",
+    # "client_id":"4a616087b1e8515fa16f16602b7d1773",
+    # "redirect_url":"https://companycustomermanage.herokuapp.com/",
+    # "code":code
+    # }
 
-    response_token = requests.post(url_token, data=data_token)
+    # response_token = requests.post(url_token, data=data_token)
 
-    token = response_token.json()
+    # token = response_token.json()
 
-    print(token)
+    # print(token)
 
-    # token = "yXXzlS0y4K91iItLUgY6D-nnavJ_Xcupdi58ZQopyV4AAAF4drrfTQ"
+    token = "OA-6VkcPdl-cSKPHdXXnb1roChp_1ybiPVnfEgorDKYAAAF4fM8AHg"
 
     url = "https://kapi.kakao.com/v2/api/talk/memo/default/send"
 
     # 사용자 토큰
     headers = {
-        "Authorization": "Bearer " + token["access_token"]
+        # "Authorization": "Bearer " + token["access_token"]
+        "Authorization": "Bearer " + token
     }
 
 
@@ -197,8 +198,9 @@ def send_msg(flight):
                     }
 
             result_msg = "안내 문자 전송 완료"
+            result_alert = "문자 전송이 완료되었습니다."
 
-            return render_template("main_check_customer.html", doc = doc, result_msg = result_msg)
+            return render_template("main_check_customer.html", doc = doc, result_msg = result_msg, result_alert = result_alert)
         # return redirect(url_for("check_customer.check_customer"))
 
     else:
