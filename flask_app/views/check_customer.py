@@ -142,7 +142,7 @@ def send_msg(flight):
 
     # print(token)
 
-    token = "Fbof_DiIC9GVW0YIfNVEa8Feuwe4SoaoYN_9pQo9dJgAAAF4f9yVbg"
+    token = "mTiUb7OQ5AcaKjiGQmAnV8eVQJKSyIxDlQtVOwopyNkAAAF4gAmjzw"
 
     url = "https://kapi.kakao.com/v2/api/talk/memo/default/send"
 
