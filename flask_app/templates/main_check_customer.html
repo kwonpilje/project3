@@ -52,7 +52,12 @@
         {% endif %}
       </td>
       <td>
-        <a class="btn btn-secondary", href='/check_customer/{{ doc.flight }}'>Delete</a>
+        <a class="btn btn-secondary", href='/check_customer/{{ doc.flight }}' onclick="delete_flight()">Delete</a>
+        <script>
+          function delete_flight(){
+          alert("항공편 정보가 삭제되었습니다.")
+        }
+        </script>
       </td>
     </tr>
   </tbody>
