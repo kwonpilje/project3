@@ -43,55 +43,12 @@
         {% if result_msg %}
         <a class="btn btn-secondary", href='/send_msg/{{ doc.flight }}'>{{result_msg}}</a>
         {% else %}
-        <!-- <a class="btn btn-secondary", href='/send_msg/{{ doc.flight }}' onclick="alert_msg()">안내문자 전송</a> -->
-        <a class="btn btn-secondary", href='/send_msg/{{ doc.flight }}' onclick="sendTo()">안내문자 전송</a>
+        <a class="btn btn-secondary", href='/send_msg/{{ doc.flight }}' onclick="alert_msg()">안내문자 전송</a>
         <script>
           function alert_msg(){
           alert("문자 전송이 완료되었습니다.")
         }
         </script>
-
-        <!-- 카카오 메시지 전송 시작-->
-        <!-- <a id="send-to-btn" href="#" onclick="sendTo();"></a> -->
-        <script type="text/javascript">
-          function sendTo() {
-            Kakao.init("7917d0cc51410de4108552ec0f626823")
-            Kakao.Auth.login({
-              scope: 'PROFILE,TALK_MESSAGE',
-              success: function() {
-                Kakao.API.request({
-                  url: '/v2/api/talk/memo/default/send',
-                  data: {
-                    template_object: {
-                      objectType: 'text',
-                      text:
-                        'hello, kakao',
-                      link: {
-                        mobile_web_url:
-                          'https://developers.kakao.com/docs/js/kakaotalklink#텍스트-템플릿-보내기',
-                        web_url:
-                          'https://developers.kakao.com/docs/js/kakaotalklink#텍스트-템플릿-보내기',
-                      },
-                    },
-                  },
-                  success: function(res) {
-                    alert('success: ' + JSON.stringify(res))
-                  },
-                  fail: function(err) {
-                    alert('error: ' + JSON.stringify(err))
-                  },
-                })
-              },
-              fail: function(err) {
-                alert('failed to login: ' + JSON.stringify(err))
-              },
-            })
-          }
-        </script>
-        <!-- 카카오 메시지 전송 끝 -->
-
-
-
         {% endif %}
       </td>
       <td>
