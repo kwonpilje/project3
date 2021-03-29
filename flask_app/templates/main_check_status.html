@@ -1,11 +1,15 @@
 {% extends 'base.html' %}
 
+{% block tab_title %} 
+<title>Project | 운항 관리</title>
+{% endblock %}
+
 {% block title  %}
-항공편 지연 및 결항 여부를 확인합니다.
+항공편 운항 예측
 {% endblock  %}
 
 {% block lead  %}
-아래 사항을 작성해주세요.
+도착 공항의 기상상황을 기반으로 지연 및 결항 여부를 예측합니다.
 {% endblock  %}
 
 {% block main_body  %}
@@ -15,18 +19,18 @@
     <input name="flight" style="margin-bottom:10px" class="form-control" type="text" placeholder="예시: KE1234"/>
   </div>
   <div class="form-group">
-    <label for="exampleFormControlSelect1">출발공항</label>
+    <label for="exampleFormControlSelect1">출발 공항</label>
     <select name="airport_ori" class="form-control" id="exampleFormControlSelect1">
-        <option selected>출발 공항을 선택하세요</option>
+        <option selected>선택하세요</option>
         <option>RKSS(김포국제공항)</option>
         <option>RKPC(제주국제공항)</option>
         <option>RKPK(김해국제공항)</option>
     </select>
   </div>
   <div class="form-group">
-    <label for="exampleFormControlSelect1">도착공항</label>
+    <label for="exampleFormControlSelect1">도착 공항</label>
     <select name="airport_des" class="form-control" id="exampleFormControlSelect1">
-        <option selected>목적 공항을 선택하세요</option>
+        <option selected>선택하세요</option>
         <option>RKSS(김포국제공항)</option>
         <option>RKPC(제주국제공항)</option>
         <option>RKPK(김해국제공항)</option>
@@ -36,14 +40,16 @@
     <label for="form-control">ETA(도착예정시간)</label>
     <input name="eta" style="margin-bottom:10px" class="form-control" type="text" placeholder="예시: 0815 or 1530 / 기준: KST" />
   </div>
-<div>
-  <input type="submit" class="btn btn-primary" value="예측하기" />
+<div class="button_prediction">
+  <input type="submit" class="btn btn-primary" value="예측하기" style="margin-top: 20px; margin-bottom: 20px;" />
 </div>
 </form>
 
 {% if prediction %}
-<p>{{flight}}편은 {{prediction}} 운항될 예정입니다.</p>
-<p>항공편 지연 또는 결항이 예상되는 경우 고객 관리를 시작하십시오.</p>
+<div class="prediction">
+  <p><span id="prediction_flight_span">{{flight}}</span>편은 <span id="prediction_span">{{prediction}}</span> 운항될 예정입니다.</p>
+  <p>항공편 지연 또는 결항이 예상되는 경우 고객 관리를 시작하십시오.</p>
+</div>
 {% endif %}
 
 {% endblock  %}
