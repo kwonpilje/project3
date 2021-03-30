@@ -90,7 +90,6 @@ def send_msg(flight):
 
     # 2. 항공편 예상 정보 조회하기
     
-    
     # 데이터 풀기
     flight = flight_info.flight
     airport_ori = flight_info.airport_ori
@@ -121,34 +120,13 @@ def send_msg(flight):
 
     # 3. 카톡 보내기
 
-    # POST /v2/api/talk/memo/default/send HTTP/1.1
-    # Host: kapi.kakao.com
-    # Authorization: Bearer {ACCESS_TOKEN}
-
-    # url_token = "https://kauth.kakao.com/oauth/token"
-
-    # code = "0x5E_F3SjF9atxrWns5QVAGTTARsBAFMNQJBkDLSxJpLvjWdXP9Gm6aZa1J9ad8GNjUUdQo9c5oAAAF4eApQnA"
-
-    # data_token = {
-    # "grant_type":"authorization_code",
-    # "client_id":"4a616087b1e8515fa16f16602b7d1773",
-    # "redirect_url":"https://companycustomermanage.herokuapp.com/",
-    # "code":code
-    # }
-
-    # response_token = requests.post(url_token, data=data_token)
-
-    # token = response_token.json()
-
-    # print(token)
-
-    token = "mTiUb7OQ5AcaKjiGQmAnV8eVQJKSyIxDlQtVOwopyNkAAAF4gAmjzw"
+    token = "XkpVMCvGPdlBT-bBF-x9oJAVi-DjZW4PT6XMsworDKcAAAF4gIWc7w"
 
     url = "https://kapi.kakao.com/v2/api/talk/memo/default/send"
 
     # 사용자 토큰
     headers = {
-        # "Authorization": "Bearer " + token["access_token"]
+
         "Authorization": "Bearer " + token
     }
 
