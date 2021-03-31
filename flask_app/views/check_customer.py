@@ -71,8 +71,6 @@ def delete_flight(flight):
     return redirect(url_for("check_customer.check_customer"))
 
 
-
-
 import json
 import requests
 
@@ -119,9 +117,7 @@ def send_msg(flight):
         airport_des_korean = "김해국제공항"
 
     # 3. 카톡 보내기
-
-    token = "XkpVMCvGPdlBT-bBF-x9oJAVi-DjZW4PT6XMsworDKcAAAF4gIWc7w"
-
+    token = ""
     url = "https://kapi.kakao.com/v2/api/talk/memo/default/send"
 
     # 사용자 토큰
