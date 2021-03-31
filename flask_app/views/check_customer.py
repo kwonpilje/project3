@@ -153,13 +153,6 @@ def send_msg(flight):
         ## DB에 flight_info가 있다면
         else:
 
-            # # 데이터 풀기
-            # flight = flight_info.flight
-            # airport_ori = flight_info.airport_ori
-            # airport_des = flight_info.airport_des
-            # prediction = flight_info.anal_result
-
-
             # 데이터 해석하기
             if prediction == 0:
                 predict_result_meaning = "결항"
@@ -179,7 +172,6 @@ def send_msg(flight):
             result_alert = "문자 전송이 완료되었습니다."
 
             return render_template("main_check_customer.html", doc = doc, result_msg = result_msg, result_alert = result_alert)
-        # return redirect(url_for("check_customer.check_customer"))
 
     else:
         print('메시지를 성공적으로 보내지 못했습니다. 오류메시지 : ' + str(response.json()))
